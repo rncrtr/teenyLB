@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>teenyLB</title>
+	<style>
+		html{margin: 0px; padding: 0px;}
+		body{margin: 0px; padding: 0px;}
+		#overlay{position: absolute; z-index: 998; display: none; min-height: 1000%; width: 100%; height: 100%; opacity:0.8; filter:alpha(opacity=80); -moz-opacity:0.8; background: #000;}
+		#lightbox{display: none; width: auto; margin-top: 150px; z-index: 999; float: left; position: absolute; left: 50%;}
+		#lbcontain{background: #FFF; text-align: left; padding-left: 20px; padding-top: 20px; float: left; position: relative; left: -50%;}
+		.lb_title{}
+		#lb_content{min-height: 500px; width: 600px;}
+		.lightboxme{cursor: pointer;}
+	</style>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script>
+		$(document).ready(function(){
+			$('.lightboxme').click(function(){
+				$('#overlay').show();
+				$('#lightbox').show();
+
+				// (optional) this will add any content you want to the lightbox dynamically
+				var content = $('#contentdiv').html();
+				$('.inner').html(content);
+			});
+		});
+	</script>
+</head>
+<body>
+<!--lightbox-->
+<div id="overlay"></div>
+<div id="lightbox">
+	<div id="lbcontain">
+		<div id="x" onclick="$('#overlay').hide(); $('#lightbox').hide(); $('#inner').html('');" style="position: absolute; right: 10px; top: 10px;">
+			<img src="assets/images/x.jpg" />
+		</div>
+		<h2 class="lb_title">The title goes here</h2>
+		<div id="lb_content">
+			<div class="inner">content here</div>
+		</div>
+	</div>
+</div>
+<!--/lightbox-->
+<div class="lightboxme">lightbox this</div>
+<div id="contentdiv" style="display: none;">this would be the dynamic content loaded from the hidden div</div>
+</body>
+</html>
